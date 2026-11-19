@@ -229,7 +229,7 @@ stream_offers
 
 ## 8. Стек
 
-* Backend: Python 3.11+, FastAPI, SQLAlchemy 2 (async) + asyncpg, Alembic, httpx, Pydantic v2.
+* Backend: Python 3.12, FastAPI, SQLAlchemy 2 (async) + asyncpg, Alembic, httpx, Pydantic v2.
 * Frontend: TypeScript, React, Vite, Tailwind CSS, shadcn/ui, TanStack Query, React Router,
   react-hook-form + zod.
 * Инфраструктура: Docker Compose (Postgres, backend, frontend на nginx).
