@@ -211,14 +211,7 @@ function OfferRow({
       <StatsCells metrics={stats} state={statsState} muted={inactive} />
       <TableCell className="pr-4 text-right">
         {inactive ? (
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={onBringBack}
-            disabled={disabled}
-            // the inactive row is muted; the action itself must look enabled
-            className="text-foreground"
-          >
+          <Button variant="outline" size="sm" onClick={onBringBack} disabled={disabled}>
             <Undo2Icon />
             Bring back
           </Button>
