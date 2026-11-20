@@ -23,7 +23,7 @@ CRUD кампаний типовой структуры и визуальный 
 
 | | |
 |---|---|
-| Backend | Python 3.11+, FastAPI, SQLAlchemy 2 (async), Alembic, PostgreSQL, httpx |
+| Backend | Python 3.12, FastAPI, SQLAlchemy 2 (async), Alembic, PostgreSQL, httpx |
 | Frontend | TypeScript, React, Vite, Tailwind CSS, shadcn/ui, TanStack Query |
 | Качество | ruff, mypy, pytest · ESLint, Prettier, Vitest · commitlint, GitHub Actions |
 
@@ -43,7 +43,7 @@ docker compose up --build
 
 ## Локальная разработка
 
-Требуется: [uv](https://docs.astral.sh/uv/), Node.js 20+, Docker (для Postgres).
+Требуется: [uv](https://docs.astral.sh/uv/) (сам поставит Python 3.12), Node.js 20+, Docker (для Postgres).
 
 ```bash
 cp .env.example .env              # заполните KEITARO_API_KEY
@@ -79,7 +79,7 @@ npm run dev
 # backend
 cd backend
 uv run ruff check . && uv run ruff format --check .
-uv run mypy app
+uv run mypy app tests
 uv run pytest
 
 # frontend
@@ -107,7 +107,7 @@ backend/
 frontend/
   src/
     components/ui/  # shadcn/ui
-    features/       # campaigns, streams
+    features/       # campaigns (список, форма), streams (детальная страница)
     lib/            # api-клиент, расчёт долей и черновика (с тестами)
 docs/SPEC.md
 ```

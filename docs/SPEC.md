@@ -73,7 +73,7 @@
 Шапка страницы: название кампании, гео, оффер и кнопки:
 
 * **Fetch streams from KT** — загружает потоки из KT и сливает с локальными данными (см. §5.2);
-* **View in KT** — открывает `{KEITARO_URL}/#!/campaigns/{kt_id}` в новой вкладке.
+* **View in KT** — открывает `{KEITARO_URL}/#!/campaign/{kt_id}` в новой вкладке.
 
 Ниже — таблица со столбцами **Name, Share, Stats, Trends, Actions**. В таблице два потока:
 первым идёт основной поток с офферами (Flow 2), вторым — поток-редирект без офферов (Flow 1).
@@ -229,7 +229,7 @@ stream_offers
 
 ## 8. Стек
 
-* Backend: Python 3.11+, FastAPI, SQLAlchemy 2 (async) + asyncpg, Alembic, httpx, Pydantic v2.
+* Backend: Python 3.12, FastAPI, SQLAlchemy 2 (async) + asyncpg, Alembic, httpx, Pydantic v2.
 * Frontend: TypeScript, React, Vite, Tailwind CSS, shadcn/ui, TanStack Query, React Router,
   react-hook-form + zod.
 * Инфраструктура: Docker Compose (Postgres, backend, frontend на nginx).
