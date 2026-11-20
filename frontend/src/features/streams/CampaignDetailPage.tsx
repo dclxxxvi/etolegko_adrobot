@@ -116,9 +116,7 @@ function CampaignDetail({ id, campaign }: { id: number; campaign: Campaign | und
     days: stats.data?.days ?? [],
   }
   const ktUrl =
-    meta.data && campaign
-      ? `${meta.data.keitaro_url}/#!/campaigns/${campaign.kt_campaign_id}`
-      : null
+    meta.data && campaign ? `${meta.data.keitaro_url}/#!/campaign/${campaign.kt_campaign_id}` : null
 
   return (
     <div className="space-y-6">
