@@ -21,6 +21,7 @@ import { getErrorMessage } from '@/lib/api'
 import { COUNTRIES, countryFlag } from '@/lib/countries'
 import { useOffers, useSaveCampaign } from '@/lib/queries'
 import type { Campaign } from '@/lib/types'
+import { offerDisplayName } from '@/lib/offers'
 
 const schema = z.object({
   name: z.string().trim().min(1, 'Name is required').max(255, 'Max 255 characters'),
@@ -72,14 +73,16 @@ function CampaignForm({ campaign, onDone }: { campaign?: Campaign | null; onDone
   const offerOptions = useMemo(() => {
     const options = (offers.data ?? []).map((o) => ({
       value: String(o.id),
-      label: o.name,
+      label: offerDisplayName(o.id, o.name),
+      prefix: <span className="text-muted-foreground tabular-nums">#{o.id}</span>,
       keywords: [String(o.id)],
     }))
     // keep the current offer selectable even if Keitaro does not list it anymore
     if (campaign && !options.some((o) => o.value === String(campaign.offer_id))) {
       options.unshift({
         value: String(campaign.offer_id),
-        label: campaign.offer_name ?? `Offer #${campaign.offer_id}`,
+        label: offerDisplayName(campaign.offer_id, campaign.offer_name),
+        prefix: <span className="text-muted-foreground tabular-nums">#{campaign.offer_id}</span>,
         keywords: [],
       })
     }
