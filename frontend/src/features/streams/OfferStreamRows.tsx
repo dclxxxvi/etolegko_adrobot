@@ -11,6 +11,7 @@ import { validateShares } from '@/lib/shares'
 import { draftReducer, initDraft, isDirty, offerChange, type OfferChange } from '@/lib/streamDraft'
 import type { Stream, StreamOffer, StreamStats } from '@/lib/types'
 import { cn } from '@/lib/utils'
+import { offerDisplayName } from '@/lib/offers'
 import { ShareInput } from './ShareInput'
 import { StatsCells, type StatsState } from './StatsCells'
 import { StreamHeaderRow } from './StreamHeaderRow'
@@ -165,7 +166,7 @@ function OfferRow({
           <span
             className={cn('truncate', inactive && 'line-through decoration-muted-foreground/40')}
           >
-            {offer.offer_name ?? 'Unknown offer'}
+            {offerDisplayName(offer.offer_id, offer.offer_name)}
           </span>
           {change && (
             <span className="shrink-0 rounded-sm bg-amber-200/60 px-1.5 py-0.5 text-[10px] font-medium tracking-wide text-amber-900 uppercase">
@@ -248,7 +249,12 @@ function AddOfferRow({
     const presentIds = new Set(present.map((o) => o.offer_id))
     return (offers.data ?? [])
       .filter((o) => !presentIds.has(o.id))
-      .map((o) => ({ value: String(o.id), label: o.name, keywords: [String(o.id)] }))
+      .map((o) => ({
+        value: String(o.id),
+        label: offerDisplayName(o.id, o.name),
+        prefix: <span className="text-muted-foreground tabular-nums">#{o.id}</span>,
+        keywords: [String(o.id)],
+      }))
   }, [offers.data, present])
 
   const add = () => {

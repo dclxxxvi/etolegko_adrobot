@@ -28,6 +28,7 @@ import { countryFlag, countryName } from '@/lib/countries'
 import { PAGE_SIZE, useCampaigns } from '@/lib/queries'
 import type { Campaign } from '@/lib/types'
 import { cn } from '@/lib/utils'
+import { offerDisplayName } from '@/lib/offers'
 import { CampaignFormDialog } from './CampaignFormDialog'
 import { DeleteCampaignDialog } from './DeleteCampaignDialog'
 
@@ -182,7 +183,8 @@ export function CampaignsPage() {
                     </TableCell>
                     <TableCell className="truncate text-muted-foreground">
                       <span className="text-foreground">#{campaign.offer_id}</span>{' '}
-                      {campaign.offer_name}
+                      {campaign.offer_name &&
+                        offerDisplayName(campaign.offer_id, campaign.offer_name)}
                     </TableCell>
                     <TableCell className="truncate text-muted-foreground">
                       {dateFormat.format(new Date(campaign.updated_at))}
